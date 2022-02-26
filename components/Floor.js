@@ -10,7 +10,6 @@ const Floor = props => {
     const yBody = props.body.position.y - heightBody /2
 
     const color = props.color;
-
     return(
         <View style={{
             backgroundColor: color,
@@ -31,9 +30,16 @@ export default (world, color, pos, size) => {
        size.height,
        {
            label: 'Floor',
-           isStatic: true
+           isStatic: true,
+           friction: 1,
+           frictionStatic: 1000,
+           density: 1000,
         }
    )
+   // initialFloor.friction = 1;
+   // initialFloor.frictionStatic = 1000;
+   // initialFloor.density = 1000;
+
    Matter.World.add(world, initialFloor)
 
    return {

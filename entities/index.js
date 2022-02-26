@@ -2,7 +2,6 @@
 import Matter from "matter-js"
 import Circle from "../components/Circle";
 import Floor from "../components/Floor";
-// import Obstacle from "../components/Obstacle";
 
 import { Dimensions } from 'react-native'
 // import { getPipeSizePosPair } from "../utils/random";
@@ -12,21 +11,37 @@ const windowWidth = Dimensions.get('window').width
 
 
 export default gameEngineRef => {
-    let engine = Matter.Engine.create({ enableSleeping: false })
+    let engine = Matter.Engine.create({
+      enableSleeping: false
+    })
 
-    let world = engine.world
+    engine.positionIterations = 100;
+    engine.velocityIterations = 100;
+    engine.constraintIterations = 100;
+
+    let world = engine.world;
 
     world.gravity.y = 0;
 
+    const CIRCLE_RADIUS = 20;
+    const WALL_DEPTH = 10;
+    const WALL_COLOR = 'transparent';
+
     return {
         physics: { engine, world },
-        Circle1: Circle(world, gameEngineRef, 'green', { x: 10, y: windowHeight - 150 }, { radius: 20 }, 'Circle1'),
-        Circle2: Circle(world, gameEngineRef, 'red', { x: 80, y: windowHeight - 150 }, { radius: 20 }, 'Circle2'),
-        Circle3: Circle(world, gameEngineRef, 'yellow', { x: 150, y: windowHeight - 150 }, { radius: 20 }, 'Circle3'),
-        Circle4: Circle(world, gameEngineRef, 'blue', { x: 240, y: windowHeight - 150 }, { radius: 20 }, 'Circle4'),
-        Floor: Floor(world, 'green', { x: windowWidth / 2, y: windowHeight }, { height: 60, width: windowWidth }),
-        Ceiling: Floor(world, 'green', { x: windowWidth / 2, y: 0 }, { height: 60, width: windowWidth }),
-        leftBar: Floor(world, 'green', { x: 0, y: windowHeight / 2 }, { height: windowHeight, width: 10 }),
-        rightBar: Floor(world, 'green', { x: windowWidth, y: windowHeight / 2 }, { height: windowHeight, width: 10 }),
+        Circle1: Circle(world, gameEngineRef, 'green', { x: 10, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle1'),
+        Circle2: Circle(world, gameEngineRef, 'red', { x: 80, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle2'),
+        Circle3: Circle(world, gameEngineRef, 'yellow', { x: 150, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle3'),
+        Circle4: Circle(world, gameEngineRef, 'blue', { x: 240, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle4'),
+
+        // Circle1: Box(world, gameEngineRef, 'green', { x: 10, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle1'),
+        // Circle2: Box(world, gameEngineRef, 'red', { x: 80, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle2'),
+        // Circle3: Box(world, gameEngineRef, 'yellow', { x: 150, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle3'),
+        // Circle4: Box(world, gameEngineRef, 'blue', { x: 240, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle4'),
+
+        Floor: Floor(world, WALL_COLOR, { x: windowWidth / 2, y: windowHeight }, { height: WALL_DEPTH, width: windowWidth }),
+        Ceiling: Floor(world, WALL_COLOR, { x: windowWidth / 2, y: 0 }, { height: WALL_DEPTH, width: windowWidth }),
+        leftBar: Floor(world, WALL_COLOR, { x: 0, y: windowHeight / 2 }, { height: windowHeight, width: WALL_DEPTH }),
+        rightBar: Floor(world, WALL_COLOR, { x: windowWidth, y: windowHeight / 2 }, { height: windowHeight, width: WALL_DEPTH }),
     }
 }

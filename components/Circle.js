@@ -47,7 +47,6 @@ const Circle = props => {
     const yBody = props.body.position.y - heightBody /2
 
     const color = props.color;
-
     const animatedStyle = useAnimatedStyle(() => {
       return {
         transform: [
@@ -70,8 +69,8 @@ const Circle = props => {
               position: 'absolute',
               left: xBody,
               top: yBody,
-              width: 40,
-              height: 40,
+              width: widthBody,
+              height: heightBody,
               borderRadius: 20,
               backgroundColor: color,
           }, animatedStyle]}/>
@@ -85,11 +84,20 @@ export default (world, engine, color, pos, size, circleId) => {
        pos.x,
        pos.y,
        size.radius,
-       {label: 'Circle', isSensor: false}
+       {
+           label: 'Circle',
+           inertia: 0,
+           friction: 0,
+           frictionStatic: 0,
+           frictionAir: 0,
+           restitution: 1,
+           density: 1000,
+       }
    )
-   initialCircle.friction = 0.2;
-   initialCircle.frictionAir = 0.001;
-   initialCircle.restitution = .5;
+   // initialCircle.friction = .8;
+   // initialCircle.frictionAir = 0.001;
+   // initialCircle.restitution = .8;
+   // initialCircle.density = 1000;
 
    Matter.World.add(world, initialCircle)
 
