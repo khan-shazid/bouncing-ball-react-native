@@ -32,8 +32,8 @@ export default (world, color, pos, size) => {
            label: 'Floor',
            isStatic: true,
            friction: 1,
-           frictionStatic: 1000,
-           density: 1000,
+           frictionStatic: 1,
+           inertia: Number.POSITIVE_INFINITY,
         }
    )
    // initialFloor.friction = 1;

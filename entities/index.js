@@ -15,9 +15,9 @@ export default gameEngineRef => {
       enableSleeping: false
     })
 
-    engine.positionIterations = 100;
-    engine.velocityIterations = 100;
-    engine.constraintIterations = 100;
+    engine.positionIterations = 1000;
+    engine.velocityIterations = 1000;
+    engine.constraintIterations = 1000;
 
     let world = engine.world;
 
@@ -33,12 +33,6 @@ export default gameEngineRef => {
         Circle2: Circle(world, gameEngineRef, 'red', { x: 80, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle2'),
         Circle3: Circle(world, gameEngineRef, 'yellow', { x: 150, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle3'),
         Circle4: Circle(world, gameEngineRef, 'blue', { x: 240, y: windowHeight - 150 }, { radius: CIRCLE_RADIUS }, 'Circle4'),
-
-        // Circle1: Box(world, gameEngineRef, 'green', { x: 10, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle1'),
-        // Circle2: Box(world, gameEngineRef, 'red', { x: 80, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle2'),
-        // Circle3: Box(world, gameEngineRef, 'yellow', { x: 150, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle3'),
-        // Circle4: Box(world, gameEngineRef, 'blue', { x: 240, y: windowHeight - 150 }, { height: 40, width: 40 }, 'Circle4'),
-
         Floor: Floor(world, WALL_COLOR, { x: windowWidth / 2, y: windowHeight }, { height: WALL_DEPTH, width: windowWidth }),
         Ceiling: Floor(world, WALL_COLOR, { x: windowWidth / 2, y: 0 }, { height: WALL_DEPTH, width: windowWidth }),
         leftBar: Floor(world, WALL_COLOR, { x: 0, y: windowHeight / 2 }, { height: windowHeight, width: WALL_DEPTH }),

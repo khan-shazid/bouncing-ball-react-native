@@ -88,10 +88,10 @@ export default (world, engine, color, pos, size, circleId) => {
            label: 'Circle',
            inertia: 0,
            friction: 0,
-           frictionStatic: 0,
+           frictionStatic: 1,
            frictionAir: 0,
-           restitution: 1,
-           density: 1000,
+           restitution: .8,
+           inertia: Number.POSITIVE_INFINITY,
        }
    )
    // initialCircle.friction = .8;

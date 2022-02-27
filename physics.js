@@ -14,7 +14,7 @@ const Physics = (entities, {touches, time, dispatch, events}) => {
                 let x = 0;
                 let y = 0;
 
-                let velocity = 8;
+                let velocity = 6;
                 // let velocity = Platform.os === 'ios' ? 0.06 : 0.02;
 
                 if (velocityX < 0) x = -1 * velocity;
