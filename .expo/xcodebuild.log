@@ -514,11 +514,6 @@ transform[stderr]: npx browserslist@latest --update-db
 transform[stderr]: 
 transform[stderr]: Why you should do it regularly:
 transform[stderr]: https://github.com/browserslist/browserslist#browsers-data-updating
-transform[stderr]: Browserslist: caniuse-lite is outdated. Please run:
-transform[stderr]: npx browserslist@latest --update-db
-transform[stderr]: 
-transform[stderr]: Why you should do it regularly:
-transform[stderr]: https://github.com/browserslist/browserslist#browsers-data-updating
 
 /Users/hello/Documents/GitHub/ball/ios/Pods/Pods.xcodeproj: warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.0, but the range of supported deployment target versions is 9.0 to 14.5.99. (in target 'boost-for-react-native' from project 'Pods')
 ** BUILD SUCCEEDED **

@@ -1,7 +1,8 @@
-import Matter from "matter-js";
+import Matter, {Vector} from "matter-js";
 import { Platform } from 'react-native';
 
 const Physics = (entities, {touches, time, dispatch, events}) => {
+    // console.log("initial position", entities['Circle1'].body.position)
     let engine = entities.physics.engine;
     if (events.length) {
         events.forEach((e) => {
@@ -15,7 +16,6 @@ const Physics = (entities, {touches, time, dispatch, events}) => {
                 let y = 0;
 
                 let velocity = 6;
-                // let velocity = Platform.os === 'ios' ? 0.06 : 0.02;
 
                 if (velocityX < 0) x = -1 * velocity;
                 else if (velocityX > 0) x = velocity;
@@ -24,20 +24,39 @@ const Physics = (entities, {touches, time, dispatch, events}) => {
 
                 console.log("circle position", circleEntity.position)
                 console.log("circle position", circleEntity.bounds)
-                // console.log("floor position", entities.Floor.body.position)
-                // console.log("ceiling position", entities.Ceiling.body.position)
 
-                Matter.Body.setVelocity(circleEntity, { x, y })
-                // Matter.Body.applyForce( circleEntity, {x: circleEntity.position.x, y: circleEntity.position.y}, {x, y});
+                // Matter.Body.set(entities[circleId], "position", {x: circleEntity.position.x, y: circleEntity.position.y})
+
+                // Matter.Body.setVelocity(circleEntity, { x, y })
+
+                let circleEntity1 = entities['Circle1'].body;
+                let circleEntity2 = entities['Circle2'].body;
+
+                let circle1 = caclulateCicleCenter(circleEntity1);
+                let circle2 = caclulateCicleCenter(circleEntity2);
+                
+                if (circleIntersect(circle1.x, circle1.y, circle1.radius, circle2.x, circle2.y, circle2.radius)) {
+                    console.log("collided from circleIntersect")
+                }
             }
         });
 
     }
 
-    // if (Matter.SAT.collides(entities.Circle1.body, entities.Floor.body)) {
-    //     console.log("collided with floor")
-    //     console.log("circle position", entities.Circle1.body.position)
-    //     console.log("floor position", entities.Floor.body.position)
+    // let circleEntity1 = entities['Circle1'].body;
+    // let circleEntity2 = entities['Circle2'].body;
+
+    //caculate center 
+    // let circle1 = caclulateCicleCenter(circleEntity1);
+    // let circle2 = caclulateCicleCenter(circleEntity2);
+    
+    // if (circleIntersect(circle1.x, circle1.y, circle1.radius, circle2.x, circle2.y, circle2.radius)) {
+    //     console.log("collided from circleIntersect")
+    // }
+
+
+    // if (Matter.Collision.collides(circleEntity1, circleEntity2)) {
+        // console.log("circles collided 1 and 2", Matter.Collision.collides(circleEntity1, circleEntity2));
     // }
 
     touches.filter(t => t.type === 'press').forEach(t => {
@@ -58,6 +77,24 @@ const Physics = (entities, {touches, time, dispatch, events}) => {
 
     return entities;
 
+}
+
+const caclulateCicleCenter = (circleEntity) => {
+    let x = circleEntity.position.x;
+    let y = circleEntity.position.y;
+    return ({
+      x, y, radius: 20
+    })
+}
+
+const circleIntersect = (x1, y1, r1, x2, y2, r2) => {
+
+  // Calculate the distance between the two circles
+  let squareDistance = (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
+  console.log("squareDistance", squareDistance, ((r1 + r2) * (r1 + r2)))
+  // When the distance is smaller or equal to the sum
+  // of the two radius, the circles touch or overlap
+  return squareDistance <= ((r1 + r2) * (r1 + r2))
 }
 
 export default Physics;
