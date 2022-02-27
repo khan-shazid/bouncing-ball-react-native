@@ -10768,11 +10768,6 @@ transform[stderr]: npx browserslist@latest --update-db
 transform[stderr]: 
 transform[stderr]: Why you should do it regularly:
 transform[stderr]: https://github.com/browserslist/browserslist#browsers-data-updating
-transform[stderr]: Browserslist: caniuse-lite is outdated. Please run:
-transform[stderr]: npx browserslist@latest --update-db
-transform[stderr]: 
-transform[stderr]: Why you should do it regularly:
-transform[stderr]: https://github.com/browserslist/browserslist#browsers-data-updating
 
 GenerateDSYMFile /Users/hello/Library/Developer/Xcode/DerivedData/Ball-cadnvcddihvplvbvcpqvnuvqsnws/Build/Products/Debug-iphonesimulator/Ball.app.dSYM /Users/hello/Library/Developer/Xcode/DerivedData/Ball-cadnvcddihvplvbvcpqvnuvqsnws/Build/Products/Debug-iphonesimulator/Ball.app/Ball (in target 'Ball' from project 'Ball')
     cd /Users/hello/Movies/bouncing-ball-react-native/ios
