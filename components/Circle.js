@@ -22,12 +22,13 @@ const Circle = props => {
 
     const panGestureEvent = useAnimatedGestureHandler({
       onStart: (event, context) => {
-        context.translateX = translateX.value;
-        context.translateY = translateY.value;
+        // context.translateX = translateX.value;
+        // context.translateY = translateY.value;
       },
       onActive: (event, context) => {
-        translateX.value = event.translationX + context.translateX;
-        translateY.value = event.translationY + context.translateY;
+        // ---changing coordinates here was making problem on physics---
+        // translateX.value = event.translationX + context.translateX;
+        // translateY.value = event.translationY + context.translateY;
       },
       onEnd: (event, context) => {
       }
@@ -69,8 +70,8 @@ const Circle = props => {
               position: 'absolute',
               left: xBody,
               top: yBody,
-              width: widthBody,
-              height: heightBody,
+              width: 40,
+              height: 40,
               borderRadius: 20,
               backgroundColor: color,
           }, animatedStyle]}/>

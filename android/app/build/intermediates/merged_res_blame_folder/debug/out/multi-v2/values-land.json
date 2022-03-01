@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hello/Documents/GitHub/ball/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/Users/hello/Movies/bouncing-ball-react-native/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
                     "source": "/Users/hello/.gradle/caches/transforms-3/bf53105e9a076c4946a78e7331df5e95/transformed/material-1.1.0/res/values-land/values-land.xml",
